@@ -1,7 +1,15 @@
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseCors(c => c
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
 BancoDeDados banco = new()
 {
