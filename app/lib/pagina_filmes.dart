@@ -118,13 +118,15 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
                       child: InkWell(
                         onTap:
                             () => {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) =>
-                                          PaginaCadastro(idFilme: e.id),
-                                ),
-                              ),
+                              Navigator.of(context)
+                                  .push(
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              PaginaCadastro(idFilme: e.id),
+                                    ),
+                                  )
+                                  .then((e) async => {await carregarFilmes()}),
                             },
                         child: SizedBox(
                           height: 160,
@@ -134,6 +136,7 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
                               Image.network(
                                 e.urlImagem,
                                 height: double.infinity,
+                                width: 100,
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(
