@@ -12,7 +12,8 @@ class FilmeModel {
   });
 
   FilmeModel.fromJson(Map<String, dynamic> json)
-    : titulo = json['titulo'],
+    : id = json['id'],
+      titulo = json['titulo'],
       urlImagem = json['urlImagem'],
       genero = json['genero'],
       faixaEtaria = json['faixaEtaria'],
