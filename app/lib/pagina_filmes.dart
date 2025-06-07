@@ -36,7 +36,20 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
           IconButton(
             onPressed:
                 () => {
-                  // TODO: abrir janelas que apresenta criadores do projeto
+                  showDialog(
+                    context: context,
+                    builder:
+                        (context) => AlertDialog(
+                          title: Text('Equipe:'),
+                          content: Text('Gabriela Soares da Silva'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        ),
+                  ),
                 },
             icon: const Icon(Icons.info),
           ),
@@ -102,7 +115,7 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
                       child: InkWell(
                         onTap:
                             () => {
-                              // TODO: navegar tela do filme
+                              // TODO: navegar a tela do filme
                             },
                         child: SizedBox(
                           height: 160,
