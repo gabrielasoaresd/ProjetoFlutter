@@ -31,4 +31,18 @@ class FilmeModel {
   int nota;
   int ano;
   String descricao;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'titulo': titulo,
+      'urlImagem': urlImagem,
+      'genero': genero,
+      'faixaEtaria': faixaEtaria,
+      'duracao': duracao,
+      'nota': nota,
+      'ano': ano,
+      'descricao': descricao,
+    };
+  }
 }

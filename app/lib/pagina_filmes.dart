@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:app/filme_model.dart';
+import 'package:app/pagina_cadastro.dart';
 import 'package:app/smooth_star_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -58,7 +59,9 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
       floatingActionButton: FloatingActionButton(
         onPressed:
             () => {
-              // TODO: navegar tela adicionar filme
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => PaginaCadastro())),
             },
         tooltip: 'Adicionar filme',
         child: const Icon(Icons.add),
@@ -115,7 +118,13 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
                       child: InkWell(
                         onTap:
                             () => {
-                              // TODO: navegar a tela do filme
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) =>
+                                          PaginaCadastro(idFilme: e.id),
+                                ),
+                              ),
                             },
                         child: SizedBox(
                           height: 160,
@@ -197,11 +206,7 @@ class _PaginaFilmesState extends State<PaginaFilmes> {
 
         setState(() => filmes = filmesObtidos);
       } else {
-        if (body?.mensagem != null) {
-          throw body.mensagem;
-        } else {
-          throw "Erro inesperado";
-        }
+        throw body['mensagem'] ?? "Erro inesperado";
       }
     } catch (e) {
       log('$e');
